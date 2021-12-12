@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
     <EditText
         android:id="@+id/etEmail"
@@ -28,5 +28,12 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:text="login" />
+
+    <TextView
+        android:id="@+id/tvResponse"
+        android:layout_marginHorizontal="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="response" />
 
 </LinearLayout>

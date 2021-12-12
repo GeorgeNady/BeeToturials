@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "BeeToturials"
 include ':app'
+include ':base'
