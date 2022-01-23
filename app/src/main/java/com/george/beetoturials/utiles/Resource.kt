@@ -1,29 +1,78 @@
 package com.george.beetoturials.utiles
 
-// that is a class recommended by Google to be used to wrap around our network responses
-// and that will be a generic class
-// and its very useful to differentiate between successful and error responses
-    // and also help us to handel the loading state =>
-        // so when we make a response we can show a progress bar while that response is processing
-        // and when we get the answer then we can use this class to tell us whether that answer was successful or an error
-        // and depending on that we can handel that error or show that successful response
+import android.util.Log
 
-
-// sealed : it is kind of abstract class
-// but we can define which classes are allowed to inherit from that Resource class
 data class Resource<T>(
     val success: Status,
     val data: T? = null,
     val message: String? = null
 ) {
 
-    enum class Status { SUCCESS, ERROR, LOADING, FAILURE }
+    enum class Status {
+        SUCCESS,
+        ERROR,
+        LOADING,
+        FAILURE
+    }
 
     companion object {
-        fun <T> success(data: T) = Resource(Status.SUCCESS, data, null)
-        fun <T> error(message: String, data: T? = null) = Resource(Status.ERROR, data, message)
-        fun <T> loading(data: T?): Resource<T> = Resource(Status.LOADING, data, null)
-        fun <T> failed(message: String, data: T? = null) = Resource(Status.FAILURE, data, message)
+
+        private const val TAG = "Resource"
+
+        fun <T> success(data: T): Resource<T> {
+            return Resource(Status.SUCCESS, data, null)
+        }
+
+        fun <T> error(message: String, data: T? = null): Resource<T> {
+            return Resource(Status.ERROR, data, message)
+        }
+
+        fun <T> loading(data: T?): Resource<T> {
+            return Resource(Status.LOADING, data, null)
+        }
+
+        fun <T> failed(message: String, data: T? = null): Resource<T> {
+            return Resource(Status.FAILURE, data, message)
+        }
+
     }
+
+    fun handler(
+        loading:()->Unit,
+        error:(String)->Unit,
+        failed:(String)->Unit,
+        suc:(T)->Unit,
+    ) {
+        when (this.success) {
+            Status.LOADING -> {
+                loading()
+                Log.d(TAG, "$TAG >>> LOADING")
+            }
+            Status.SUCCESS -> {
+                suc(data!!)
+                Log.d(TAG, "$TAG >>> SUCCESS $data")
+            }
+            Status.ERROR -> {
+                error(message!!)
+                Log.d(TAG, "$TAG >>> ERROR $message")
+            }
+            Status.FAILURE -> {
+                failed(message!!)
+                Log.d(TAG, "$TAG >>> FAILURE $message")
+            }
+        }
+    }
+    /*
+    x.handler(
+        err = x.data?.error,
+        loading = {},
+        error = {},
+        failed = {},
+        showActionDialog = { showSessionDialog() }
+     ) {
+
+     }
+    */
+
 
 }

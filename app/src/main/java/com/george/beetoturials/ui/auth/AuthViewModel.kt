@@ -1,4 +1,4 @@
-package com.george.beetoturials.ui
+package com.george.beetoturials.ui.auth
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -11,7 +11,7 @@ import com.george.beetoturials.utiles.Resource
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
-class MainViewModel(
+class AuthViewModel(
     val app: Application,
     val repo: MainRepo
 ) : AndroidViewModel(app) {

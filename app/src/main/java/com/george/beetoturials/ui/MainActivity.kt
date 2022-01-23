@@ -1,67 +1,18 @@
 package com.george.beetoturials.ui
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.util.Log
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
+import com.george.beetoturials.base.BaseActivity
 import com.george.beetoturials.databinding.ActivityMainBinding
-import com.george.beetoturials.models.login.LoginBody
-import com.george.beetoturials.repositories.MainRepo
-import com.george.beetoturials.utiles.Resource
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity<ActivityMainBinding>(
+    ActivityMainBinding::inflate
+) {
 
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var mainViewModel: MainViewModel
-    val TAG = "MainActivity"
+    override val TAG: String get() = this.javaClass.name
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun beforeCreatingView() {}
 
-        val factory = MainViewProviderFactory(application, MainRepo())
-        mainViewModel = ViewModelProvider(this,factory)[MainViewModel::class.java]
+    override fun initialization() {}
 
-        binding.apply {
-            btnLogin.setOnClickListener {
-                Log.d("MAinActivity", "onCreate: email: ${etEmail.text} pass: ${etPassword.text}")
-            }
-        }
+    override fun setListener() {}
 
-        binding.apply {
-            btnLogin.setOnClickListener {
-
-                val body = LoginBody(
-                    etEmail.text.toString(),
-                    etPassword.text.toString(),
-                    "fcmid"
-                )
-
-                lifecycleScope.launchWhenCreated {
-                    mainViewModel.doLogin(body)
-                }
-
-            }
-
-            mainViewModel.loginResponse.observe(this@MainActivity) {
-                when (it.success) {
-                    Resource.Status.LOADING -> {
-                        Log.d(TAG, "onCreate: data ${it.data} message ${it.message}")
-                    }
-                    Resource.Status.SUCCESS -> {
-                        Log.d(TAG, "onCreate: data ${it.data} message ${it.message}")
-                    }
-                    Resource.Status.ERROR -> {
-                        Log.d(TAG, "onCreate: data ${it.data} message ${it.message}")
-                    }
-                    Resource.Status.FAILURE -> {
-                        Log.d(TAG, "onCreate: data ${it.data} message ${it.message}")
-                    }
-                }
-            }
-
-        }
-    }
 }

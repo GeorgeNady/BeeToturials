@@ -1,16 +1,16 @@
-package com.george.beetoturials.ui
+package com.george.beetoturials.ui.auth
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.george.beetoturials.repositories.MainRepo
 
-class MainViewProviderFactory(
+class AuthViewModelProviderFactory(
     val app:Application,
     val repo:MainRepo
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return MainViewModel(app,repo) as T
+        return AuthViewModel(app,repo) as T
     }
 }

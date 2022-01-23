@@ -12,4 +12,6 @@ class MainRepo : BaseDataSource() {
 
     suspend fun login(body: LoginBody) = safeApiCall { api.login(body) }
 
+    suspend fun resgester(body: LoginBody) = safeApiCall { api.login(body) }
+
 }
