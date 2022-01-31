@@ -1,6 +1,7 @@
 package com.george.beetoturials.repositories
 
 import com.george.beetoturials.models.login.LoginBody
+import com.george.beetoturials.models.register.RegisterBody
 import com.george.beetoturials.network.ApiClient.Companion.api
 import com.george.beetoturials.network.BaseDataSource
 
@@ -12,6 +13,6 @@ class MainRepo : BaseDataSource() {
 
     suspend fun login(body: LoginBody) = safeApiCall { api.login(body) }
 
-    suspend fun resgester(body: LoginBody) = safeApiCall { api.login(body) }
+    suspend fun register(body: RegisterBody) = safeApiCall { api.register(body) }
 
 }

@@ -1,39 +1,339 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.auth.AuthActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <EditText
-        android:id="@+id/etEmail"
+    <data>
+
+    </data>
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:hint="email"
-        android:inputType="textEmailAddress" />
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:hint="password"
-        android:inputType="textPassword" />
 
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:text="login" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tvResponse"
-        android:layout_marginHorizontal="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="response" />
 
-</LinearLayout>
+            <LinearLayout
+                android:id="@+id/parentLinear"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical"
+                tools:context=".ui.activities.auth.fragments.EmailSignupFragment"
+                tools:ignore="UselessParent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="?actionBarSize"
+                    android:clipChildren="false"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/hzPaddingToScreen">
+
+                    <include
+                        android:id="@+id/btnBack"
+                        layout="@layout/back_button" />
+
+                </RelativeLayout>
+
+                <androidx.core.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:paddingBottom="@dimen/_30sdp"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
+                        android:gravity="center|top"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="@dimen/hzPaddingToScreen">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/_20sdp"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:text="@string/sign_up"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/h0_text_size"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/etPhoneOrEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/et_container_height"
+                            android:layout_marginBottom="@dimen/hzMarginToScreen"
+                            android:background="@drawable/et_auth_bg"
+                            android:hint="@string/e_mail"
+                            android:inputType="textEmailAddress"
+                            tools:ignore="TextFields"
+                            android:autofillHints="@string/e_mail" />
+
+                        <EditText
+                            android:id="@+id/etFullName"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/et_container_height"
+                            android:layout_marginBottom="@dimen/hzMarginToScreen"
+                            android:background="@drawable/et_auth_bg"
+                            android:hint="@string/full_name"
+                            android:maxLength="30"
+                            android:inputType="text"
+                            android:autofillHints="@string/full_name" />
+
+                        <EditText
+                            android:id="@+id/etUserName"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/et_container_height"
+                            android:layout_marginBottom="@dimen/hzMarginToScreen"
+                            android:background="@drawable/et_auth_bg"
+                            android:maxLength="8"
+                            android:maxLines="1"
+                            android:hint="@string/user_name"
+                            android:autofillHints="@string/user_name"
+                            android:inputType="text" />
+
+                        <EditText
+                            android:id="@+id/etUserPhone"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/et_container_height"
+                            android:layout_marginBottom="@dimen/hzMarginToScreen"
+                            android:background="@drawable/et_auth_bg"
+                            android:hint="@string/phone"
+                            android:autofillHints="@string/phone"
+                            android:inputType="phone" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/etPasswordLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/et_container_height"
+                            android:layout_marginBottom="@dimen/hzMarginToScreen"
+                            android:background="@drawable/et_auth_bg"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/text_hint_color"
+                            app:boxBackgroundMode="none"
+                            app:hintEnabled="false"
+                            app:passwordToggleEnabled="true">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etPassword"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/et_container_height"
+                                android:hint="@string/password"
+                                android:importantForAutofill="yes"
+                                android:inputType="textPassword"
+                                android:paddingHorizontal="@dimen/vertical_padding_to_views"
+                                android:paddingVertical="0dp"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/text_hint_color"
+                                android:textSize="@dimen/_14sdp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <EditText
+                            android:id="@+id/etRePassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/et_container_height"
+                            android:layout_marginBottom="@dimen/hzMarginToScreen"
+                            android:background="@drawable/et_auth_bg"
+                            android:hint="@string/retype_password"
+                            android:autofillHints="@string/retype_password"
+                            android:inputType="textPassword" />
+
+                        <!-- Birthdate -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/hzMarginToScreen"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/birthday"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/h3_text_size"
+                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <Spinner
+                                    android:id="@+id/spDay"
+                                    android:layout_width="0dp"
+                                    android:layout_height="@dimen/et_container_height"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/et_auth_bg"
+                                    android:entries="@array/item_day"
+                                    android:spinnerMode="dialog"
+                                    android:textAlignment="center" />
+
+                                <View
+                                    android:layout_width="@dimen/_10sdp"
+                                    android:layout_height="match_parent" />
+
+                                <Spinner
+                                    android:id="@+id/spMonth"
+                                    android:layout_width="0dp"
+                                    android:layout_height="@dimen/et_container_height"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/et_auth_bg"
+                                    android:entries="@array/item_month"
+                                    android:spinnerMode="dialog"
+                                    android:textAlignment="center" />
+
+                                <View
+                                    android:layout_width="@dimen/_10sdp"
+                                    android:layout_height="match_parent" />
+
+                                <Spinner
+                                    android:id="@+id/spYear"
+                                    android:layout_width="0dp"
+                                    android:layout_height="@dimen/et_container_height"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/et_auth_bg"
+                                    android:spinnerMode="dialog"
+                                    android:textAlignment="center" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <!-- Gender -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/hzMarginToScreen"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/gender"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/h3_text_size"
+                                android:textStyle="bold" />
+
+                            <!-- TODO : Set this style for selecting gender instead of the above -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioGroup
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <RadioButton
+                                        android:id="@+id/rbMale"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:buttonTint="@color/teal_200"
+                                        android:paddingHorizontal="@dimen/vertical_padding_to_views"
+                                        android:text="@string/male"
+                                        android:textSize="@dimen/p1_text_size"
+                                        tools:ignore="TooDeepLayout" />
+
+                                    <View
+                                        android:layout_width="@dimen/_15sdp"
+                                        android:layout_height="wrap_content" />
+
+                                    <RadioButton
+                                        android:id="@+id/rbFemale"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:buttonTint="@color/teal_200"
+                                        android:paddingHorizontal="@dimen/vertical_padding_to_views"
+                                        android:text="@string/female"
+                                        android:textSize="@dimen/p1_text_size" />
+
+                                </RadioGroup>
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <!-- Terms and Conditions -->
+                        <LinearLayout
+                            android:id="@+id/termsLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            tools:ignore="UseCompoundDrawables">
+
+                            <ImageView
+                                android:id="@+id/ivTermsChecked"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/vertical_padding_to_views"
+                                android:contentDescription="@string/app_name"
+                                android:src="@drawable/ic_checkbox_checked" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/agree_terms"
+                                android:textColor="@color/gry"
+                                android:textSize="@dimen/p1_text_size" />
+
+                        </LinearLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnSignUp"
+                            style="@style/RegisterButtonStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/btn_container_height"
+                            android:layout_marginTop="@dimen/vertical_padding_to_views"
+                            android:backgroundTint="@color/teal_200"
+                            android:text="@string/sign_up"
+                            android:textAlignment="center" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/vertical_padding_to_views"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/already_have_an_account"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/p1_text_size" />
+
+                            <include layout="@layout/spacer" />
+
+                            <TextView
+                                android:id="@+id/btnSignIn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="?selectableItemBackground"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:padding="@dimen/_5sdp"
+                                android:text="@string/sign_in"
+                                android:textColor="@color/teal_200"
+                                android:textSize="@dimen/p1_text_size" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.core.widget.NestedScrollView>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+</layout>
