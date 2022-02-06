@@ -1,4 +1,4 @@
-package com.george.beetoturials.models.login
+package com.george.beetoturials.models.auth.login
 
 import com.google.gson.annotations.SerializedName
 

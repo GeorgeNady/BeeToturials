@@ -3,8 +3,28 @@
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_200">#0094F0</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red_start">#FC0000</color>
+    <color name="red_popular">#FF0000</color>
+    <color name="green">#00ff00</color>
+    <color name="red">#DA222C</color>
+    <color name="red_end">#B00000</color>
+    <color name="gry">#707070</color>
+    <color name="gry_light">#e3e4e9</color>
+    <color name="text_hint_color">#B9B9B9</color>
+    <color name="background_color">#E3E3E3</color>
+    <color name="setting_bg">#F3FAFF</color>
+    <color name="text_sides_bg">#E5E6E6</color>
+    <color name="text_sides_bg_unvoted">#888888</color>
+    <color name="divider_background_color">#E8E8E8</color>
+    <color name="bottom_nav_icon_tint">#2C2C2C</color>
+    <color name="colorWhiteTransparent">#7CFFFFFF</color>
+    <color name="un_voted_color">#59000000</color>
+
+    <color name="danger">#dc3545</color>
+    <color name="success">#28a745</color>
+
 </resources>
